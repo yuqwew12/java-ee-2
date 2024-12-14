@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.selectionsystem.dao.SelectionMapper">
+    <select id="getSelectionsByStudentId" parameterType="int" resultType="com.example.selectionsystem.model.Selection">
+        SELECT * FROM selections WHERE student_id = #{studentId}
+    </select>
+
+    <insert id="insertSelection" parameterType="com.example.selectionsystem.model.Selection">
+        INSERT INTO selections (student_id, course_id)
+        VALUES (#{studentId}, #{courseId})
+    </insert>
+</mapper>

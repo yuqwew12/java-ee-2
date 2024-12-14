@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.selectionsystem.dao.CourseMapper">
+    <select id="getAllCourses" resultType="com.example.selectionsystem.model.Course">
+        SELECT * FROM courses
+    </select>
+
+    <select id="getCourseById" parameterType="int" resultType="com.example.selectionsystem.model.Course">
+        SELECT * FROM courses WHERE id = #{id}
+    </select>
+
+    <insert id="insertCourse" parameterType="com.example.selectionsystem.model.Course">
+        INSERT INTO courses (name, max_students, current_students)
+        VALUES (#{name}, #{maxStudents}, #{currentStudents})
+    </insert>
+
+    <update id="updateCourse" parameterType="com.example.selectionsystem.model.Course">
+        UPDATE courses
+        SET current_students = #{currentStudents}
+        WHERE id = #{id}
+    </update>
+</mapper>
