@@ -22,10 +22,16 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public ModelAndView registerNewStudent(@RequestParam String name, @RequestParam String password) {
-        Student student = new Student();
-        student.setName(name);
-        student.setPassword(password);
-        studentService.addStudent(student);
-        return new ModelAndView("redirect:/login");
+        if (studentService.isUsernameExists(name)) {
+            ModelAndView modelAndView = new ModelAndView("register");
+            modelAndView.addObject("error", "用户名已存在");
+            return modelAndView;
+        } else {
+            Student student = new Student();
+            student.setName(name);
+            student.setPassword(password);
+            studentService.addStudent(student);
+            return new ModelAndView("redirect:/login");
+        }
     }
 }

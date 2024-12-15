@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>注册</title>
     <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
@@ -21,8 +22,11 @@
         <input type="password" id="password" name="password" required><br><br>
         <button type="submit">注册</button>
     </form>
+    <!-- 显示错误信息 -->
+    <!--/*@thymesVar id="error" type="com.example.selectionsystem.controller.RegistrationController"*/-->
+    <p style="color: red;" th:if="${error}" th:text="${error}"></p>
     <a href="/login">登录</a>
 </div>
 </body>
 </html>
-
+   

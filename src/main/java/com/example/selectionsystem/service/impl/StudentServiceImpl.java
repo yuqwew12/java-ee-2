@@ -32,4 +32,8 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentMapper.getStudentByName(name);
         return student != null && student.getPassword().equals(password);
     }
+    @Override
+    public boolean isUsernameExists(String name) {
+        return studentMapper.isUsernameExists(name);
+    }
 }

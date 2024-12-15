@@ -14,4 +14,8 @@ public interface StudentMapper {
 
     @Insert("INSERT INTO students (name, password) VALUES (#{name}, #{password})")
     void insertStudent(Student student);
+
+
+    @Select("SELECT COUNT(*) > 0 FROM students WHERE name = #{name}")
+    boolean isUsernameExists(@Param("name") String name);
 }
